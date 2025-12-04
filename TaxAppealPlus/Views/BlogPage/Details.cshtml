@@ -1,0 +1,74 @@
+@model TaxAppealPlus.Models.BlogPost
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main id="main" class="main">
+    <section class="blog_section">
+        <div class="container blog_detail_page">
+            <div class="row">
+                <div class="col-lg-8">
+                    <article class="blog-detail-article">
+                        <header class="blog-detail-header">
+                            <h1>@Model.Title</h1>
+                            <div class="blog-detail-meta">
+                                <span class="meta-item">
+                                    <i class="bi bi-person-circle"></i>
+                                    @Model.Author
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-calendar3"></i>
+                                    @Model.PublishedAt.ToString("MMMM d, yyyy")
+                                </span>
+                            </div>
+                        </header>
+                        
+                        @if (!string.IsNullOrWhiteSpace(Model.FeaturedImage))
+                        {
+                            <div class="blog-detail-image">
+                                <img src="@Model.FeaturedImage" alt="@Model.Title" class="img-fluid" />
+                            </div>
+                        }
+                        
+                        <div class="blog-detail-body">
+                            @Html.Raw(Model.Content)
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="col-lg-4">
+                    <aside class="blog-detail-sidebar">
+                        <div class="sidebar-widget">
+                            <h4>Related Articles</h4>
+                            <div class="related-posts">
+                                @if (ViewBag.RelatedPosts != null)
+                                {
+                                    foreach (var related in (List<TaxAppealPlus.Models.BlogPost>)ViewBag.RelatedPosts)
+                                    {
+                                        <div class="related-post">
+                                            <div class="related-post-content">
+                                                <h6>
+                                                    <a href="/blog/@related.Slug">@related.Title</a>
+                                                </h6>
+                                                <span class="related-post-date">
+                                                    @related.PublishedAt.ToString("MMM d, yyyy")
+                                                </span>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <p>No related articles found.</p>
+                                }
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+

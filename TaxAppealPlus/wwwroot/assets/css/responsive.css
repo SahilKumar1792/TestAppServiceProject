@@ -402,7 +402,9 @@
         justify-content: center;
         align-items: center;
     }
-
+    .blog_detail_page .row {
+        gap: 15px;
+    }
     .Efficient_image img {
         border-radius: 20px;
         height: inherit;

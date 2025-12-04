@@ -19,15 +19,11 @@ namespace TaxAppealPlus.Controllers
         [HttpGet("Demo")]
         public IActionResult Demo()
         {
-            var referrer = HttpContext.Request.Headers.Referer.ToString();
-            ViewData["Referrer"] = string.IsNullOrEmpty(referrer) ? "/" : referrer;
             return View();
         }
         [HttpGet("About")]
         public IActionResult About()
         {
-            var referrer = HttpContext.Request.Headers.Referer.ToString();
-            ViewData["Referrer"] = string.IsNullOrEmpty(referrer) ? "/" : referrer;
             return View();
         }
     }

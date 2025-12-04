@@ -22,8 +22,8 @@
     <meta property="og:type" content="website" />
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/favicon.png" rel="apple-touch-icon">
+    <link href="~/assets/img/favicon.png" rel="icon">
+    <link href="~/assets/img/favicon.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
 
@@ -32,13 +32,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
           rel="stylesheet">
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="assets/css/main.css?v=@DateTime.Now.Ticks" rel="stylesheet">
-    <link href="assets/css/responsive.css?v=@DateTime.Now.Ticks" rel="stylesheet">
+    <link href="~/assets/css/main.css?v=@DateTime.Now.Ticks" rel="stylesheet">
+    <link href="~/assets/css/responsive.css?v=@DateTime.Now.Ticks" rel="stylesheet">
 
 
     <!-- Google tag (gtag.js) -->
@@ -50,18 +50,22 @@
 <body class="index-page">
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
-            <a href="@ViewData["Referrer"]" class="logo d-flex align-items-center me-auto">
-                <img class="brand__logo" src="./assets/img/logo.png" />
+            <a asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center me-auto">
+                <img class="brand__logo" src="~/assets/img/logo.png" />
             </a>
 
-            <a class="aboutLink" href="/about">About</a>
+            <a class="aboutLink header-menu @(Context.Request.Path == "/about" ? "active" : "")" href="/about">About</a>
+            <a class="blogLink header-menu @(Context.Request.Path.StartsWithSegments("/blog") ? "active" : "")" href="/blog">Blog</a>
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li>
                         <p>Got Questions? <br> <span><i class="bi-telephone-fill"></i> 516-882-6537</span></p>
                     </li>
                     <li>
-                        <a class="aboutLinkMobile" href="/about">About</a>
+                        <a class="aboutLinkMobile @(Context.Request.Path == "/about" ? "active" : "")" href="/about">About</a>
+                    </li>
+                    <li>
+                        <a class="aboutLinkMobile @(Context.Request.Path.StartsWithSegments("/blog") ? "active" : "")" href="/blog">Blog</a>
                     </li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -77,7 +81,7 @@
             <div class="row gy-4">
                 <div class="col-lg-6 col-md-6 footer-about">
                     <a href="#" class="d-flex align-items-center">
-                        <img class="brand__logo" src="./assets/img/logo.png">
+                        <img class="brand__logo" src="~/assets/img/logo.png">
                     </a>
                 </div>
 
@@ -122,11 +126,11 @@
 
 
     <!-- Vendor JS Files -->
-    @* <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> *@
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    @* <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> *@
+    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
 
     <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="~/assets/js/main.js"></script>
     <script>
         // Get the current year and set it in the span with id="year"
         document.getElementById("year").textContent = new Date().getFullYear();
